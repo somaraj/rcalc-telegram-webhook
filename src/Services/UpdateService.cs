@@ -30,19 +30,20 @@ namespace RCalcTelegramWebhook.Services
             options.AppendLine("4 Band Resistor Value Calculator:");
             options.AppendLine("----------------------------------");
             options.AppendLine("Please input the below values with comma separator");
-            options.AppendLine("e.g: 2,0,0,1\n");
+            options.AppendLine("e.g: 2,0,0,1");
             options.AppendLine("----------------------------------");
-
-            options.AppendLine("<b>0: Black</b>");
-            options.AppendLine("<b>1: Brown</b>");
-            options.AppendLine("<b>2: Red</b>");
-            options.AppendLine("<b>3: Orange</b>");
-            options.AppendLine("<b>4: Yellow</b>");
-            options.AppendLine("<b>5: Green</b>");
-            options.AppendLine("<b>6: Blue</b>");
-            options.AppendLine("<b>7: Violet</b>");
-            options.AppendLine("<b>8: Grey</b>");
-            options.AppendLine("<b>9: White</b>");
+            options.AppendLine("<b>0:   Black</b>");
+            options.AppendLine("<b>1:   Brown</b>");
+            options.AppendLine("<b>2:   Red</b>");
+            options.AppendLine("<b>3:   Orange</b>");
+            options.AppendLine("<b>4:   Yellow</b>");
+            options.AppendLine("<b>5:   Green</b>");
+            options.AppendLine("<b>6:   Blue</b>");
+            options.AppendLine("<b>7:   Violet</b>");
+            options.AppendLine("<b>8:   Grey</b>");
+            options.AppendLine("<b>9:   White</b>");
+            options.AppendLine("<b>10:  Gold</b>");
+            options.AppendLine("<b>11:  Silver</b>");
 
             var invalidInput = $"Sorry I am an automated system and didn't understand your reply.\n{options.ToString()}";
 
