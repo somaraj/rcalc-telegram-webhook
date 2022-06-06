@@ -137,18 +137,28 @@ namespace RCalcTelegramWebhook.Services
                 }
 
                 var unit = "Ω";
-                if (bandThreeColor.Value > 1 && bandThreeColor.Value < 5)
-                    unit = "KΩ";
-                if (bandThreeColor.Value >= 5 && bandThreeColor.Value < 8)
-                    unit = "MΩ";
-                if (bandThreeColor.Value >= 8)
-                    unit = "GΩ";
 
                 var resistorColor = $"{bandOneColor.Name},{bandTwoColor.Name},{bandThreeColor.Name},{bandFourColor.Name}";
                 var baseValue = Convert.ToInt32($"{bandOneColor.Value}{bandTwoColor.Value}");
                 var resistorValue = baseValue * Math.Pow(10, bandThreeColor.Value);
 
-                await _botService.Client.SendTextMessageAsync(message.Chat.Id, $"{resistorColor}\nThe value is {resistorValue:N0} {unit} ({bandFourColor.Tolerance})", ParseMode.Html);
+                if (bandThreeColor.Value > 1 && bandThreeColor.Value < 5)
+                {
+                    unit = "KΩ";
+                    resistorValue = resistorValue / 1000;
+                }
+                if (bandThreeColor.Value >= 5 && bandThreeColor.Value < 8)
+                {
+                    unit = "MΩ";
+                    resistorValue = resistorValue / 1000 / 1000;
+                }
+                if (bandThreeColor.Value >= 8)
+                {
+                    unit = "GΩ";
+                    resistorValue = resistorValue / 1000 / 1000 / 1000;
+                }
+
+                await _botService.Client.SendTextMessageAsync(message.Chat.Id, $"Color selected: {resistorColor}\nThe value is {resistorValue:N0} {unit} ({bandFourColor.Tolerance})", ParseMode.Html);
             }
             catch (Exception ex)
             {
